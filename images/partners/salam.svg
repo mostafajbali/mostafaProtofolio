@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 90" fill="none">
+  <!-- Salam Relief and Development -->
+  <g>
+    <!-- Emblem: Dove of Peace & Crescent Leaf -->
+    <circle cx="45" cy="45" r="32" fill="#2563EB" opacity="0.12"/>
+    <path d="M30 52 C36 40 46 36 58 32 C54 42 50 48 42 52 C48 50 56 46 62 48 C56 56 44 60 30 52 Z" fill="#2563EB"/>
+    <path d="M42 34 C44 28 50 26 56 26" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Typography -->
+    <text x="94" y="44" font-family="'Alexandria', sans-serif" font-weight="800" font-size="20" fill="#2563EB">جمعية سلام للإغاثة والتنمية</text>
+    <text x="94" y="65" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" fill="#94A3B8" letter-spacing="1.5">SALAM RELIEF &amp; DEVELOPMENT</text>
+  </g>
+</svg>

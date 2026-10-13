@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم والإدارة الخاصة | مصطفى الجبالي</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ================= 1. Protected Lock Screen Gate ================= -->
+  <div class="admin-lockscreen" id="adminLockscreen" role="dialog" aria-modal="true" aria-label="بوابة تسجيل الدخول الخاصة بالمسؤول">
+    <div class="lock-card">
+      <div class="lock-aperture-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+          <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+          <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+          <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+          <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+          <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+        </svg>
+      </div>
+
+      <h2>منطقة الإدارة المحمية</h2>
+      <p>
+        مرحباً مصطفى! هذه البوابة مخصصة لك حصرياً لرفع وإدارة الفيديوهات والصور وتحديث أعمال المعرض في أي وقت.
+      </p>
+
+      <form class="lock-form" id="lockForm">
+        <div class="lock-input-group">
+          <label for="lockUsername">اسم المستخدم (Username):</label>
+          <input type="text" id="lockUsername" class="lock-input" placeholder="اسم المستخدم" required autocomplete="username" autofocus dir="ltr">
+        </div>
+
+        <div class="lock-input-group">
+          <label for="lockPassword">كلمة المرور السرية (Password):</label>
+          <input type="password" id="lockPassword" class="lock-input" placeholder="••••••••" required autocomplete="current-password" dir="ltr">
+        </div>
+
+        <button type="submit" class="lock-submit-btn">
+          <span>دخول لوحة التحكم</span>
+          <span>🔐</span>
+        </button>
+
+        <div class="lock-error" id="lockError">
+          ⚠️ اسم المستخدم أو كلمة المرور غير صحيحة! يرجى التأكد والمحاولة مجدداً.
+        </div>
+      </form>
+
+      <div class="lock-hint">
+        🔐 بيانات الدخول الافتراضية الأولية: اسم المستخدم <code>mostafa</code> | كلمة المرور <code>mostafa2026</code> (يمكنك تغييرهما معاً من تبويب الأمان لاحقاً).
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 2. Admin Header ================= -->
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-nav-wrap">
+        
+        <div class="admin-brand">
+          <div class="brand-badge">
+            <span>M</span>
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong style="font-size: 16px; color: #ffffff;">مصطفى الجبالي</strong>
+              <span class="admin-brand-tag">ADMIN PORTAL</span>
+            </div>
+            <small style="font-size: 11px; color: #86efac; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+              <span class="status-indicator"></span> متصل كمسؤول رئيسي
+            </small>
+          </div>
+        </div>
+
+        <div class="admin-header-actions">
+          <a href="index.html" class="admin-action-btn btn-view-site" target="_blank" rel="noopener noreferrer">
+            <span>زيارة المعرض العام</span>
+            <span>↗</span>
+          </a>
+          <button type="button" class="admin-action-btn btn-logout" id="btnLogout">
+            <span>تسجيل الخروج</span>
+            <span>🚪</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 3. Admin Main Content ================= -->
+  <main class="admin-main">
+    <div class="container">
+      
+      <!-- Stats Bar -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">🎬</div>
+          <div class="admin-stat-info">
+            <strong id="countVideos">6</strong>
+            <small>إجمالي أعمال الفيديو</small>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">📷</div>
+          <div class="admin-stat-info">
+            <strong id="countPhotos">5</strong>
+            <small>إجمالي الصور المعروضة</small>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">✨</div>
+          <div class="admin-stat-info">
+            <strong id="countTotal">0</strong>
+            <small>أعمال مضافة عبر اللوحة</small>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">⚡</div>
+          <div class="admin-stat-info">
+            <strong style="color: #86efac; font-size: 18px; margin-top: 4px;">فورية</strong>
+            <small>مزامنة حية مع صفحة العرض</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-tabs-nav" role="tablist">
+        <button type="button" class="admin-tab-btn active" data-target="tabVideo" role="tab">
+          <span>🎬</span>
+          <span>إضافة فيديو ومونتاج جديد</span>
+        </button>
+        <button type="button" class="admin-tab-btn" data-target="tabPhoto" role="tab">
+          <span>📷</span>
+          <span>رفع صورة فوتوغرافية من الجهاز</span>
+        </button>
+        <button type="button" class="admin-tab-btn" data-target="tabManage" role="tab">
+          <span>📋</span>
+          <span>إدارة وحذف الأعمال المضافة</span>
+        </button>
+        <button type="button" class="admin-tab-btn" data-target="tabSettings" role="tab">
+          <span>⚙️</span>
+          <span>الأمان والنسخ الاحتياطي</span>
+        </button>
+      </div>
+
+      <!-- ================= Tab 1: Add Video Form ================= -->
+      <div class="tab-panel active" id="tabVideo">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h3>🎬 نشر مشروع فيديو أو ريلز جديد في المعرض</h3>
+            <p>أدخل بيانات الفيديو ورابطه من منصات التواصل الاجتماعي (انستغرام، فيسبوك، يوتيوب، تيك توك) ليظهر فوراً في قسم أعمال الفيديو.</p>
+          </div>
+
+          <form id="addVideoForm">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="videoTitle">عنوان المشروع / الفعالية: *</label>
+                <input type="text" id="videoTitle" class="form-input" placeholder="مثال: حفل تخرج الفوج العاشر، إعلان تجاري..." required>
+              </div>
+
+              <div class="form-group">
+                <label for="videoPlatform">المنصة الناشرة: *</label>
+                <select id="videoPlatform" class="form-select">
+                  <option value="instagram" selected>انستغرام (Instagram Reel)</option>
+                  <option value="facebook">فيسبوك (Facebook Video)</option>
+                  <option value="youtube">يوتيوب (YouTube / Shorts)</option>
+                  <option value="tiktok">تيك توك (TikTok)</option>
+                  <option value="vimeo">فيميو (Vimeo)</option>
+                  <option value="drive">رابط خارجي مباشر (Drive / Cloud)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Institution / Partner Selection Block -->
+            <div class="institution-select-box" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-gold); border-radius: 12px; padding: 18px 20px; margin-bottom: 22px;">
+              <label style="display: block; font-weight: 700; color: var(--gold-light); margin-bottom: 12px; font-size: 15px;">
+                🏛️ تحديد المؤسسة أو المدرسة الشريكة (وشعارها):
+              </label>
+
+              <!-- Mode Radios -->
+              <div class="institution-mode-radios" style="display: flex; gap: 24px; margin-bottom: 16px; flex-wrap: wrap;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #ffffff; font-weight: 500;">
+                  <input type="radio" name="institutionMode" value="existing" checked id="modeExistingInst">
+                  <span>اختيار من المؤسسات والمدارس الموجودة مسبقاً</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #ffffff; font-weight: 500;">
+                  <input type="radio" name="institutionMode" value="new" id="modeNewInst">
+                  <span>إضافة مؤسسة أو مدرسة جديدة مع شعارها ➕</span>
+                </label>
+              </div>
+
+              <!-- Mode A: Existing Institution Select -->
+              <div id="existingInstGroup" class="form-group">
+                <label for="existingInstSelect">اختر اسم المؤسسة / المدرسة: *</label>
+                <select id="existingInstSelect" class="form-select">
+                  <option value="gaza-college" selected data-name="كلية ومدرسة غزة" data-logo="images/partners/logo-gaza-college.jpg" data-wm="images/partners/logo-gaza-college-transparent.png">كلية ومدرسة غزة (تأسست 1942)</option>
+                  <option value="al-basma" data-name="مدرسة البسمة الحديثة" data-logo="images/partners/logo-al-basma.jpg" data-wm="images/partners/logo-al-basma-transparent.png">مدرسة البسمة الحديثة</option>
+                  <option value="sadaqa" data-name="مؤسسة صدقة العالمية" data-logo="images/partners/logo-sadaqa.jpg" data-wm="images/partners/logo-sadaqa-transparent.png">مؤسسة صدقة العالمية (Sadaqa Welfare Fund)</option>
+                  <option value="salam" data-name="جمعية سلام للإغاثة والتنمية" data-logo="images/partners/logo-salam.jpg" data-wm="images/partners/logo-salam-transparent.png">جمعية سلام للإغاثة والتنمية</option>
+                  <option value="idrf" data-name="مؤسسة IDRF الكندية" data-logo="images/partners/logo-idrf.jpg" data-wm="images/partners/logo-idrf-transparent.png">مؤسسة IDRF الكندية للإغاثة والتنمية</option>
+                  <option value="taawon" data-name="مؤسسة التعاون" data-logo="images/partners/logo-taawon.jpg" data-wm="images/partners/logo-taawon-transparent.png">مؤسسة التعاون (Taawon)</option>
+                  <option value="ard-el-insan" data-name="جمعية أرض الإنسان" data-logo="images/partners/logo-ard-el-insan.jpg" data-wm="images/partners/logo-ard-el-insan-transparent.png">جمعية أرض الإنسان - فلسطين (1984)</option>
+                  <option value="maan" data-name="مركز العمل التنموي / معاً" data-logo="images/partners/logo-maan.jpg" data-wm="images/partners/logo-maan-transparent.png">مركز العمل التنموي - معاً (MA'AN)</option>
+                  <option value="kharijat" data-name="جمعية الخريجات بقطاع غزة" data-logo="images/partners/logo-kharijat.jpg" data-wm="images/partners/logo-kharijat-transparent.png">جمعية الخريجات بقطاع غزة</option>
+                  <option value="beit-lahia" data-name="جمعية تطوير بيت لاهيا" data-logo="images/partners/logo-beit-lahia.jpg" data-wm="images/partners/logo-beit-lahia-transparent.png">جمعية تطوير بيت لاهيا</option>
+                  <option value="unicef" data-name="اليونيسف" data-logo="images/partners/unicef.svg" data-wm="images/partners/unicef.svg">اليونيسف (UNICEF Palestine)</option>
+                  <option value="undp" data-name="برنامج الأمم المتحدة الإنمائي" data-logo="images/partners/undp.svg" data-wm="images/partners/undp.svg">برنامج الأمم المتحدة الإنمائي (UNDP)</option>
+                </select>
+
+                <!-- Live Preview of selected institution -->
+                <div id="existingInstPreview" style="display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 10px 14px; background: rgba(0, 0, 0, 0.4); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                  <div style="width: 44px; height: 44px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 3px; overflow: hidden; flex-shrink: 0;">
+                    <img id="selectedInstLogoImg" src="images/partners/logo-gaza-college.jpg" alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                  </div>
+                  <div>
+                    <strong id="selectedInstNameText" style="color: #ffffff; font-size: 14px;">كلية ومدرسة غزة</strong>
+                    <small style="display: block; color: var(--gold); font-size: 11px;">سيتم وضع الشعار في الكرت كعلامة مائية وفي وسام الشريك المعتمد</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mode B: Add New Institution (Hidden by default) -->
+              <div id="newInstGroup" style="display: none;">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label for="newInstName">اسم المؤسسة أو المدرسة الجديدة: *</label>
+                    <input type="text" id="newInstName" class="form-input" placeholder="مثال: جامعة الأزهر، مدرسة الفجر، مؤسسة الإغاثة...">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="newInstLogoInput">رفع شعار المؤسسة الجديدة (صورة): *</label>
+                    <input type="file" id="newInstLogoInput" class="form-input" accept="image/*">
+                  </div>
+                </div>
+
+                <!-- Preview for new uploaded logo -->
+                <div id="newInstPreviewBox" style="display: none; align-items: center; gap: 14px; margin-top: 12px; padding: 10px 14px; background: rgba(0, 0, 0, 0.4); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                  <div style="width: 44px; height: 44px; background: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 3px; overflow: hidden; flex-shrink: 0;">
+                    <img id="newInstPreviewImg" src="" alt="" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                  </div>
+                  <div>
+                    <strong id="newInstPreviewName" style="color: #ffffff; font-size: 14px;">اسم المؤسسة الجديدة</strong>
+                    <small style="display: block; color: #86efac; font-size: 11px;">✓ سيتم حفظ هذه المؤسسة وشعارها تلقائياً لتتمكن من اختيارها مجدداً في أي وقت</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="videoUrl">رابط الفيديو المباشر (URL): *</label>
+                <input type="url" id="videoUrl" class="form-input" placeholder="https://www.instagram.com/reel/... أو https://www.facebook.com/..." required dir="ltr">
+              </div>
+
+              <div class="form-group">
+                <label for="videoCategory">تصنيف العمل: *</label>
+                <input type="text" id="videoCategory" class="form-input" placeholder="مثال: توثيق إنساني، تغطية حفل تخرج، ريلز تسويقي...">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="videoDesc">وصف العمل وتفاصيل المونتاج والإخراج:</label>
+              <textarea id="videoDesc" class="form-textarea" placeholder="اكتب نبذة توضح طبيعة التغطية، الزوايا، أسلوب المونتاج، والجهة المستفيدة..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-publish">
+              <span>نشر الفيديو في المعرض فوراً</span>
+              <span>🚀</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================= Tab 2: Add Photo Form ================= -->
+      <div class="tab-panel" id="tabPhoto">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h3>📷 رفع صورة فوتوغرافية مباشرة من جهازك</h3>
+            <p>اختر أي صورة عالية الجودة من جهاز الكمبيوتر أو الهاتف، وسيتم حفظها وعرضها فوراً في معرض التصوير الفوتوغرافي مع ميزة التكبير بالحجم الكامل.</p>
+          </div>
+
+          <form id="addPhotoForm">
+            <!-- Dropzone Area -->
+            <div class="upload-dropzone" id="uploadDropzone">
+              <input type="file" id="photoFileInput" accept="image/*">
+              <span class="upload-icon">📁</span>
+              <strong>اسحب وأفلت ملف الصورة هنا، أو اضغط للاختيار من جهازك</strong>
+              <span>يدعم كافة صيغ الصور الشائعة (JPG, PNG, WebP) بأعلى جودة</span>
+            </div>
+
+            <!-- Live Image Preview -->
+            <div class="image-preview-box" id="imagePreviewBox">
+              <img src="" alt="معاينة الصورة" id="imagePreviewImg">
+              <div class="image-preview-meta">
+                <span id="imagePreviewName">filename.jpg</span>
+                <span class="remove-preview-btn" id="btnRemovePreview">إزالة الصورة ✕</span>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="photoTitle">عنوان الصورة / اللقطة: *</label>
+                <input type="text" id="photoTitle" class="form-input" placeholder="مثال: نظرة أمل وسط الركام، ابتسامة طفل..." required>
+              </div>
+
+              <div class="form-group">
+                <label for="photoCategory">التصنيف أو المؤسسة الراعية: *</label>
+                <input type="text" id="photoCategory" class="form-input" placeholder="مثال: بورتريه إنساني، حملة IDRF، تغطية ميدانية...">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="photoDesc">تفاصيل اللقطة أو القصة الإنسانية الموثقة:</label>
+              <textarea id="photoDesc" class="form-textarea" placeholder="اكتب شرحاً قصيراً يظهر في نافذة المعاينة المكبرة عند نقر الزائر على الصورة..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-publish">
+              <span>نشر الصورة في المعرض فوراً</span>
+              <span>📸</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================= Tab 3: Manage Published Items ================= -->
+      <div class="tab-panel" id="tabManage">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h3>📋 إدارة الأعمال المضافة حديثاً</h3>
+            <p>يمكنك استعراض كافة الفيديوهات والصور التي قمت بإضافتها عبر هذه اللوحة، أو حذف أي عمل منها فوراً.</p>
+          </div>
+
+          <div class="items-list" id="manageItemsList">
+            <!-- Dynamically populated via admin.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Tab 4: Security & Backup ================= -->
+      <div class="tab-panel" id="tabSettings">
+        <div class="admin-card" style="margin-bottom: 30px;">
+          <div class="admin-card-head">
+            <h3>🔒 تعديل رمز المرور السري للوحة التحكم</h3>
+            <p>تأكد من اختيار رمز مرور قوي وسهل الحفظ بالنسبة لك لمنع أي شخص آخر من الوصول للوحة.</p>
+          </div>
+
+          <form id="formChangeCreds" style="max-width: 520px;">
+            <div class="form-group">
+              <label for="newUsername">اسم المستخدم الجديد: *</label>
+              <input type="text" id="newUsername" class="form-input" required autocomplete="username" dir="ltr" placeholder="أدخل اسم المستخدم الجديد">
+            </div>
+
+            <div class="form-group">
+              <label for="currPass">كلمة المرور الحالية للتأكيد: *</label>
+              <input type="password" id="currPass" class="form-input" required autocomplete="current-password" dir="ltr" placeholder="أدخل كلمة المرور الحالية">
+            </div>
+
+            <div class="form-group">
+              <label for="newPass">كلمة المرور الجديدة: *</label>
+              <input type="password" id="newPass" class="form-input" required autocomplete="new-password" placeholder="أدخل 4 أحرف أو أرقام على الأقل" dir="ltr">
+            </div>
+
+            <div class="form-group">
+              <label for="confirmNewPass">تأكيد كلمة المرور الجديدة: *</label>
+              <input type="password" id="confirmNewPass" class="form-input" required autocomplete="new-password" placeholder="أعد كتابة كلمة المرور الجديدة" dir="ltr">
+            </div>
+
+            <button type="submit" class="admin-action-btn" style="background: var(--gold-gradient); color: #06070a; font-weight: 700; padding: 12px 24px;">
+              <span>تحديث وحفظ بيانات الدخول</span>
+              <span>✓</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h3>💾 النسخ الاحتياطي ونقل البيانات (Backup & Restore)</h3>
+            <p>يمكنك تحميل نسخة احتياطية كاملة من جميع الفيديوهات والصور المضافة بملف واحد على جهازه، أو استعادتها على أي جهاز كمبيوتر آخر بنقرة واحدة.</p>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+            <button type="button" class="btn-submit-publish" id="btnExportBackup" style="background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid var(--border-gold);">
+              <span>تحميل نسخة احتياطية من أعمالك (JSON)</span>
+              <span>📥</span>
+            </button>
+
+            <label class="btn-submit-publish" style="background: rgba(229, 184, 105, 0.1); color: var(--gold-light); border: 1px solid var(--border-gold); cursor: pointer; margin: 0;">
+              <span>استعادة نسخة احتياطية من ملف</span>
+              <span>📤</span>
+              <input type="file" id="backupFileInput" accept=".json" style="display: none;">
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="admin-toast" id="adminToast" role="status" aria-live="polite"></div>
+
+  <!-- Script -->
+  <script src="admin.js"></script>
+</body>
+</html>

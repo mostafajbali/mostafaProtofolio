@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 90" fill="none">
+  <!-- UNDP Logo -->
+  <rect x="15" y="12" width="66" height="66" rx="6" fill="#006ECD"/>
+  <!-- World grid in icon -->
+  <ellipse cx="48" cy="45" rx="22" ry="22" stroke="#ffffff" stroke-width="2.2" fill="none"/>
+  <ellipse cx="48" cy="45" rx="10" ry="22" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+  <line x1="26" y1="45" x2="70" y2="45" stroke="#ffffff" stroke-width="1.8"/>
+  <line x1="31" y1="34" x2="65" y2="34" stroke="#ffffff" stroke-width="1.5"/>
+  <line x1="31" y1="56" x2="65" y2="56" stroke="#ffffff" stroke-width="1.5"/>
+  
+  <!-- Wordmark UNDP -->
+  <text x="100" y="55" font-family="'Outfit', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="44" fill="#006ECD" letter-spacing="2">UNDP</text>
+</svg>

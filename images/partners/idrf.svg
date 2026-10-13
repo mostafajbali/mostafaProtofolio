@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" fill="none">
+  <!-- IDRF Canada Logo -->
+  <g>
+    <!-- Emblem: Maple Leaf & Care Hands -->
+    <circle cx="45" cy="45" r="34" fill="#E11D48" opacity="0.12"/>
+    <path d="M45 20 L50 32 L60 30 L55 40 L64 45 L52 50 L53 60 L45 53 L37 60 L38 50 L26 45 L35 40 L30 30 L40 32 Z" fill="#E11D48"/>
+    <circle cx="45" cy="42" r="5" fill="#ffffff"/>
+    
+    <!-- Wordmark -->
+    <text x="96" y="46" font-family="'Outfit', sans-serif" font-weight="900" font-size="36" fill="#E11D48" letter-spacing="2">IDRF</text>
+    <text x="96" y="66" font-family="'Outfit', sans-serif" font-weight="600" font-size="11" fill="#94A3B8" letter-spacing="1.5">CANADA RELIEF</text>
+  </g>
+</svg>

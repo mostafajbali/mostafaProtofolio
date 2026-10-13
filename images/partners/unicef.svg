@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" fill="none">
+  <!-- UNICEF Logo -->
+  <g fill="#00AEEF">
+    <!-- Emblem -->
+    <circle cx="45" cy="45" r="36" fill="none" stroke="#00AEEF" stroke-width="3" stroke-dasharray="4 2"/>
+    <path d="M45 18 C37 18 32 23 32 30 C32 40 45 46 45 56 C45 46 58 40 58 30 C58 23 53 18 45 18 Z" fill="#00AEEF"/>
+    <circle cx="45" cy="30" r="5" fill="#ffffff"/>
+    <circle cx="40" cy="50" r="4" fill="#ffffff"/>
+    <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+    <path d="M26 62 Q45 74 64 62" stroke="#00AEEF" stroke-width="3" fill="none"/>
+    <path d="M20 54 Q45 78 70 54" stroke="#00AEEF" stroke-width="2" fill="none"/>
+    
+    <!-- Wordmark unicef -->
+    <text x="100" y="55" font-family="'Outfit', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="44" fill="#00AEEF" letter-spacing="-1">unicef</text>
+    <circle cx="242" cy="28" r="3.5" fill="#00AEEF"/>
+  </g>
+</svg>

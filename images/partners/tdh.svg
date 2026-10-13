@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 90" fill="none">
+  <!-- Terre des Hommes (أرض الإنسان) -->
+  <g>
+    <!-- Emblem: Protective Circle and Child Hand -->
+    <rect x="15" y="15" width="60" height="60" rx="12" fill="#DC2626"/>
+    <path d="M45 28 C37 28 32 34 32 40 C32 49 45 54 45 62 C45 54 58 49 58 40 C58 34 53 28 45 28 Z" fill="#ffffff"/>
+    <circle cx="45" cy="38" r="4" fill="#DC2626"/>
+
+    <!-- Typography -->
+    <text x="92" y="44" font-family="'Outfit', sans-serif" font-weight="800" font-size="20" fill="#DC2626">Terre des hommes</text>
+    <text x="92" y="66" font-family="'Alexandria', sans-serif" font-weight="700" font-size="14" fill="#94A3B8">أرض الإنسان</text>
+  </g>
+</svg>

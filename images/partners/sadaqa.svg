@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" fill="none">
+  <!-- Sadaqa Organization Logo -->
+  <g>
+    <!-- Emblem: Helping Hands & Water Droplet -->
+    <circle cx="45" cy="45" r="32" fill="#0D9488" opacity="0.12"/>
+    <path d="M45 22 C45 22 34 36 34 44 C34 50 39 55 45 55 C51 55 56 50 56 44 C56 36 45 22 45 22 Z" fill="#0D9488"/>
+    <path d="M28 52 C32 60 45 66 54 62" stroke="#E5B869" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Typography -->
+    <text x="94" y="44" font-family="'Alexandria', sans-serif" font-weight="800" font-size="24" fill="#0D9488">مؤسسة صدقة</text>
+    <text x="94" y="65" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" fill="#94A3B8" letter-spacing="2">SADAQA FOUNDATION</text>
+  </g>
+</svg>

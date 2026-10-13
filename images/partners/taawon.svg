@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" fill="none">
+  <!-- Taawon Welfare Association Logo -->
+  <g fill="#1B6A47">
+    <!-- Emblem: Geometric Olive Leaf / Star of Palestine -->
+    <path d="M48 16 C38 28 34 40 48 54 C62 40 58 28 48 16 Z" fill="#1B6A47"/>
+    <path d="M26 38 C38 38 48 48 48 62 C34 62 26 50 26 38 Z" fill="#258D5F"/>
+    <path d="M70 38 C58 38 48 48 48 62 C62 62 70 50 70 38 Z" fill="#0E4E32"/>
+    <circle cx="48" cy="46" r="4.5" fill="#E5B869"/>
+
+    <!-- Bilingual Typography -->
+    <text x="96" y="44" font-family="'Alexandria', sans-serif" font-weight="800" font-size="28" fill="#1B6A47">تـعـاون</text>
+    <text x="96" y="66" font-family="'Outfit', sans-serif" font-weight="700" font-size="16" fill="#6B7280" letter-spacing="3">TAAWON</text>
+  </g>
+</svg>
